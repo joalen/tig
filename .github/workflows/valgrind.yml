@@ -48,7 +48,7 @@ jobs:
             if [ "$tool" == "memcheck" ]; then
               valgrind_options+=" --leak-check=full --show-leak-kinds=all --track-origins=yes"
             fi
-            timeout 60s valgrind --tool="$tool" $valgrind_options --log-file="./valgrind_reports/$(basename "$file")-${tool_name}_klee_report.txt" "$executable"
+            timeout 60s valgrind --tool="$tool" $valgrind_options --log-file="./valgrind_reports/$(basename "$file")-${tool_name}_valgrind_report.txt" "$executable"
             local exit_status=$?
             if [ $exit_status -eq 124 ]; then
               return
